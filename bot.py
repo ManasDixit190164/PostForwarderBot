@@ -33,15 +33,15 @@ async def _(event):
                         if event.media.webpage:
                             await bot.send_message(i, event.text, link_preview=False)
                             return
-                except:
-                media = event.media.document
-                await bot.send_file(i, media, caption=event.text, link_preview=False)
-                return
-        else:
-        await bot.send_message(i, event.text, link_preview=False)
+                    except:
+                        media = event.media.document
+                        await bot.send_file(i, media, caption=event.text, link_preview=False)
+                        return
+                else:
+                    await bot.send_message(i, event.text, link_preview=False)
 
-except:
-print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+        except:
+            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
 
 print("Bot has been deployed.")
 bot.run_until_disconnected()
