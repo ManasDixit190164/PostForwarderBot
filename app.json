@@ -1,55 +1,32 @@
-import os
-import logging
-import time
-import asyncio
-from telethon import TelegramClient, events, Button
-from telethon.tl.functions.users import GetFullUserRequest
-
-print("Starting deployment...")
-
-api_id = 1089935
-api_hash = "0dcc3ba0a6d8645cc404c4f6189b1840"
-bot_token = "2013999702:AAFKYOfzAjVE5k4xKwntjMNFzdXNbKeiZas"
-from_channel = -1001385076818
-to_channel = [-1001747779397,-100166+-3802984,-1001592836028,-1001529949759,-1001526995634,-1001525770536,-1001333978413,-1001239074731,-1001219612175,-1001346637937,-1001436098326,-1001372997271,-1001497325726,-1001457625038,-1001748493882,-1001593784776,-1001155233048,-1001187925614,-1001368695613,-1001445095452,-1001524026545,-1001538321307,-1001572164185,-1001517048806]
-
-bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
-
-'''
-@bot.on(events.NewMessage)
-async def handler(event):
-    print(event)
-
-except:
-    print("Mandatory vars are missing! Kindly check again.")
-    print("Bot is quiting...")
-    exit()'''
-
-
-@bot.on(events.NewMessage(incoming=True, chats=from_channel))
-async def _(event):
-    if not event.is_private:
-        try:
-            for i in to_channel:
-                time.sleep(0.8)
-                if event.poll:
-                    return
-                if event.photo:
-                    photo = event.media.photo
-                    await bot.send_file(i, photo, caption=event.text, link_preview=False)
-                elif event.media:
-                    try:
-                        if event.media.webpage:
-                            await bot.send_message(i, event.text, link_preview=False)
-                            return
-                    except:
-                        media = event.media.document
-                        await bot.send_file(i, media, caption=event.text, link_preview=False)
-                        return
-                else:
-                    await bot.send_message(i, event.text, link_preview=False)
-        except:
-            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
-print("Bot has been deployed.")
-bot.start()
-bot.run_until_disconnected()
+{
+    "name": "PostForwarderBot",
+    "description": "Open-Source bot to forward post from one channel to another",
+    "repository": "https://github.com/stark-Prince/PostForwarderBot",
+    "keywords": [
+      "forward", 
+      "telethon",
+      "telegram"
+    ],
+    "env": {
+      "BOT_TOKEN": {
+        "description": "A bot token from @BotFather",
+        "required": true
+      },
+      "API_ID": {
+        "description": "App ID from my.telegram.org/apps",
+        "required": true
+      },
+      "API_HASH": {
+        "description": "App HASH from my.telegram.org/apps",
+        "required": true
+      },
+      "FROM_CHANNEL": {
+        "description": "Your channel ID from where you want to forward post",
+        "required": true
+      },
+      "TO_CHANNEL": {
+        "description": "Your channel ID to where you want to forward post",
+        "required": true
+      }
+    }
+  }
