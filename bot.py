@@ -1,3 +1,4 @@
+from os import environ
 import os
 import logging
 import time
@@ -7,13 +8,13 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 print("Starting deployment...")
 
-api_id = int(os.environ["API_ID"])
-api_hash = os.environ["API_HASH"]
-bot_token = os.environ["BOT_TOKEN"]
+API_ID = environ.get('API_ID', '6')
+API_HASH = environ.get('API_HASH', 'eb06d4abfb49dc3eeb1aeb98ae0f581e')
+bot_token = environ.get["BOT_TOKEN"]
 from_channel = -1001385076818
 to_channel = [-1001747779397,-1001663802984,-1001592836028,-1001529949759,-1001526995634,-1001525770536,-1001333978413,-1001239074731,-1001219612175,-1001346637937,-1001436098326,-1001372997271,-1001497325726,-1001457625038,-1001748493882,-1001593784776,-1001155233048,-1001187925614,-1001368695613,-1001445095452,-1001524026545,-1001538321307,-1001572164185,-1001517048806]
 
-bot = TelegramClient('bot', api_id, api_hash).start(bot_token=bot_token)
+bot = TelegramClient('bot', api_id=API_ID, api_hash=API_HASH).start(bot_token=bot_token)
 
 
 @bot.on(events.NewMessage(incoming=True, chats=from_channel))
