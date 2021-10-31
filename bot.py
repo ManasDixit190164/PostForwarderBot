@@ -23,7 +23,7 @@ async def _(event):
     for i in to_channel:
         try:
             #for i in to_channel:
-                time.sleep(0.8)
+                time.sleep(0.2)
                 if event.poll:
                     return
                 if event.photo:
