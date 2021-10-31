@@ -40,8 +40,8 @@ async def _(event):
                 else:
                     await bot.send_message(i, event.text, link_preview=False)
 
-        except:
-            print("TO_CHANNEL ID is wrong or I can't send messages there (make me admin).")
+        except Exception as e:
+            print("ERROR : "+str(e))
 
 print("Bot has been deployed.")
 bot.run_until_disconnected()
