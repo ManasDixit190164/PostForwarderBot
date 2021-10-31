@@ -41,7 +41,7 @@ async def _(event):
                     await bot.send_message(i, event.text, link_preview=False)
 
         except Exception as e:
-            print("ERROR : "+str(e))
+            print("ERROR : "+str(e)+str(to_channel))
 
 print("Bot has been deployed.")
 bot.run_until_disconnected()
