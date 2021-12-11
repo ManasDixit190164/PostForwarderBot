@@ -8,7 +8,7 @@ from telethon.tl.functions.users import GetFullUserRequest
 
 print("Starting deployment...")
 
-API_ID = environ.get('API_ID', '6')
+API_ID = environ.get('API_ID', '14295855')
 API_HASH = environ.get('API_HASH', 'd7c97d558577a8633485c557a41174ef')
 BOT_TOKEN = '2016904177:AAE0mbhWrI2aqzcQ_eNIhA_ozYuEzurgESc'
 from_channel = -1001385076818
