@@ -26,4 +26,5 @@ async def _(event):
 
 
 print("Bot has been deployed.")
-bot.run_until_disconnected()
+
+bot.run_until_disconnected() 
